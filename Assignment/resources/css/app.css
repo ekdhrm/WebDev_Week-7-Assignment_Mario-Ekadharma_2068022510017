@@ -1,11 +1,59 @@
 @import 'tailwindcss';
 
+@import '@fontsource/anton/400.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
 @source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 @source "../../storage/framework/views/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-ink-950: #0a0a0a;
+    --color-ink-900: #121212;
+    --color-ink-800: #1c1c1c;
+    --color-ink-700: #343434;
+    --color-paper: #ebf6db;
+    --color-mute: #a3a89a;
+    --color-volt: #d6f633;
+    --color-hot: #ee4266;
+    --color-gold: #ffd23f;
+    --color-teal: #21a4a7;
+
+    --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+    --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+    --animate-marquee: marquee 30s linear infinite;
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
 }
+
+@utility clip-cut {
+    --cut: 14px;
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+}
+
+@utility clip-slant {
+    clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+}
+
+@utility halftone {
+    background-image: radial-gradient(circle at center, currentColor 1.2px, transparent 1.7px);
+    background-size: 10px 10px;
+}
+
+@utility scanlines {
+    background-image: repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.22) 2px 3px);
+}
+
+@utility stripes {
+    background-image: repeating-linear-gradient(-45deg, currentColor 0 8px, transparent 8px 16px);
+}
+
+@custom-variant hocus (&:hover, &:focus-visible);
